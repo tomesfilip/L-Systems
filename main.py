@@ -17,7 +17,7 @@ axiom_fractal_plant = "X"
 
 
 rules_sierpinski_triangle = {
-    "F": "F−G+F+G−F",
+    "F": "F-G+F+G-F",
     "G": "GG"
 }
 axiom_sierpinski_triangle = "F-G-G"
@@ -27,7 +27,7 @@ axiom_sierpinski_triangle = "F-G-G"
 sentences_dragon_curve = SG.generate_word(
     axiom=axiom_dragon_curve,
     rules=rules_dragon_curve,
-    iter_count=8
+    iter_count=4
 )
 sentences_fractal_plant = SG.generate_word(
     axiom=axiom_fractal_plant,
@@ -44,7 +44,8 @@ print("DRAGON CURVE: ", sentences_dragon_curve)
 print("FRACTAL PLANT: ", sentences_fractal_plant)
 print("SIERPINSKI TRIANGLE: ", sentences_sierpinski_triangle)
 
-drawer = LSystemDrawer.LSystemDrawer()
-drawer.draw_dragon_curve(sentences=sentences_dragon_curve)
-
+drawer = LSystemDrawer.LSystemDrawer(size=20)
+# drawer.draw_dragon_curve(sentences=sentences_dragon_curve)
+# drawer.draw_sierpinski_triangle(sentences=sentences_sierpinski_triangle)
+drawer.draw_fractal_plant(sentences=sentences_fractal_plant)
 
