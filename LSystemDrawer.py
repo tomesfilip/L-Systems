@@ -17,11 +17,11 @@ class LSystemDrawer:
         self.drawer.pensize(pen_width)
         self.drawer.hideturtle()
         self.conditions = {
-            "A-U": string.ascii_uppercase.rsplit('V')[0],
-            "a-u": string.ascii_lowercase.rsplit('v')[0],
+            "A-U": string.ascii_uppercase.rsplit("V")[0],
+            "a-u": string.ascii_lowercase.rsplit("v")[0],
             "digits": string.digits,
-            "V-Z": string.ascii_uppercase.rsplit('U')[1],
-            "v-z": string.ascii_lowercase.rsplit('u')[1],
+            "V-Z": string.ascii_uppercase.rsplit("U")[1],
+            "v-z": string.ascii_lowercase.rsplit("u")[1],
         }
 
     def clear_board(self):
@@ -35,13 +35,13 @@ class LSystemDrawer:
             self._restart_drawer(color_set=self._get_random_color())
             print(f"Iteration #{i} / Sentence: {sentence}")
             for command in sentence:
-                if command in self.conditions.get('A-U') or command in self.conditions.get('digits'):
+                if command in self.conditions.get("A-U") or command in self.conditions.get("digits"):
                     self.drawer.pendown()
                     self.drawer.forward(self.size)
-                elif command in self.conditions.get('a-u'):
+                elif command in self.conditions.get("a-u"):
                     self.drawer.penup()
                     self.drawer.forward(self.size)
-                elif command in self.conditions.get('V-Z') or command in self.conditions.get('v-z'):
+                elif command in self.conditions.get("V-Z") or command in self.conditions.get("v-z"):
                     continue
                 elif command == "+":
                     self.drawer.left(angle)
@@ -61,7 +61,7 @@ class LSystemDrawer:
             time.sleep(self.sleep_time)
             self._restart_drawer(clear=True)
 
-    def _restart_drawer(self, clear: bool = False, color_set: tuple = (0, 0, 0)):
+    def _restart_drawer(self, clear: bool = False, color_set: str = "#000000"):
         if clear:
             self.clear_board()
         self.drawer.penup()
@@ -90,5 +90,4 @@ class LSystemDrawer:
 
     @staticmethod
     def _get_random_color():
-        return "#" + ''.join([random.choice('0123456789ABCDEF') for j in range(6)])
-
+        return "#" + "".join([random.choice("0123456789ABCDEF") for char in range(6)])
