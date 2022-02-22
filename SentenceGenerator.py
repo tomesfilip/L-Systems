@@ -4,6 +4,9 @@ class SentenceGenerator:
         sentences = []
         word = axiom
         for i in range(iter_count):
+            if i == 0:
+                sentences.append(word)
+                continue
             new_word = ""
             for character in word:
                 new_word += rules[character] if character in rules.keys() else character
